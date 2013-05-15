@@ -23,17 +23,11 @@ include_recipe "monitoring"
 
 platform_options = node["nova"]["platform"]
 
-platform_options["nova_vncproxy_packages"].each do |pkg|
+(platform_options["nova_vncproxy_packages"].each
++ platform_options["nova_vncproxy_consoleauth_packages"]).each do |pkg|
   package pkg do
-    action :install
+    action node["osops"]["do_package_upgrades"] == true ? :upgrade : :install
     options platform_options["package_overrides"]
-  end
-end
-
-# required for vnc console authentication
-platform_options["nova_vncproxy_consoleauth_packages"].each do |pkg|
-  package pkg do
-    action :install
   end
 end
 

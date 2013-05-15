@@ -143,7 +143,7 @@ when "fedora", "redhat", "centos"
     "nova_cert_packages" => ["openstack-nova-cert"],
     "nova_cert_service" => "openstack-nova-cert",
     "mysql_service" => "mysqld",
-    "common_packages" => ["openstack-nova-common", "python-cinderclient"],
+    "common_packages" => ["openstack-nova-common", "python-cinderclient", "python-keystone"],
     "iscsi_helper" => "tgtadm",
     "iscsi_service" => "tgtd",
     "package_overrides" => "",

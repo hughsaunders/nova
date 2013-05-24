@@ -79,8 +79,9 @@ template "/etc/nova/api-paste.ini" do
   mode "0600"
   variables(
     "component"  => node["package_component"],
-    "keystone_api_ipaddress" => ks_admin_endpoint["host"],
+    "admin_host" => ks_admin_endpoint["host"],
     "admin_port" => ks_admin_endpoint["port"],
+    "service_host" => ks_service_endpoint["host"],
     "service_port" => ks_service_endpoint["port"],
     "admin_token" => keystone["admin_token"]
   )

@@ -140,11 +140,11 @@ paste.filter_factory = nova.api.auth:NovaKeystoneContext.factory
 
 [filter:authtoken]
 paste.filter_factory = keystone.middleware.auth_token:filter_factory
-service_host = <%= @keystone_api_ipaddress %>
+service_host = <%= @service_host %>
 service_port = <%= @service_port %>
 service_protocol = http
-auth_host = <%= @keystone_api_ipaddress %>
+auth_host = <%= @admin_host %>
 auth_port = <%= @admin_port %>
 auth_protocol = http
-auth_uri = http://<%= @keystone_api_ipaddress %>:<%= @service_port %>/v2.0/
+auth_uri = http://<%= @admin_host %>:<%= @admin_port %>/v2.0/
 admin_token = <%= @admin_token %>

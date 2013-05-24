@@ -137,12 +137,13 @@ template "/etc/nova/api-paste.ini" do
   group "nova"
   mode "0600"
   variables(
-            "component"  => node["package_component"],
-            "keystone_api_ipaddress" => ks_service_endpoint["host"],
-            "service_port" => ks_service_endpoint["port"],
-            "admin_port" => ks_admin_endpoint["port"],
-            "admin_token" => keystone["admin_token"]
-            )
+    "component"  => node["package_component"],
+    "service_host" => ks_service_endpoint["host"],
+    "service_port" => ks_service_endpoint["port"],
+    "admin_host" => ks_admin_endpoint["host"],
+    "admin_port" => ks_admin_endpoint["port"],
+    "admin_token" => keystone["admin_token"]
+  )
   notifies :restart, resources(:service => "nova-api-os-compute"), :delayed
 end
 
